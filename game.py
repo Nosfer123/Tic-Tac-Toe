@@ -13,10 +13,19 @@ def drawboard():
     print(' ' + board['7'] + ' | ' + board['8'] + ' | ' + board['9'])
     print('   |   |\n')
 
-def restart():
-    restart = input('Do you want to restart game? Yes/No:\n')
+def restart(): #not finished
+    restart_game = input('Do you want to restart game? yes/no:\n').lower()
+    if restart_game != 'yes' or 'no':
+        restart_game = input('Do you want to restart game? yes/no:\n').lower()
+    if restart_game == 'yes':
+        board = {'1': '1', '2': '2', '3': '3', '4': '4', '5': '5', '6': '6', '7': '7', '8': '8', '9': '9'}
+    else:
+        exit()
+
+
 
 def Win():
+    global letter # is it ok to use global in this situation, or better to have local argument?
     if (board['1'] == letter and board['2'] == letter and board ['3'] == letter or # top line
     board['4'] == letter and board['5'] == letter and board['6'] == letter or      # second line
     board['7'] == letter and board['8'] == letter and board['9'] == letter or      # last line
@@ -34,17 +43,16 @@ def Win():
 
 
 turn = 'player1'
+letter = 'X'
 while True:
     drawboard()
     Win()
     if turn == 'player1':
         letter = 'X'
+        move = input('Player 1 turn (Select a cell: 1-9): ')
         turn = 'player2'
     else:
         letter = '0'
+        move = input('Player 2 turn (Select a cell: 1-9): ')
         turn = 'player1'
-    move = input('Your turn: ')
     board[move] = letter
-
-
-
