@@ -11,7 +11,7 @@ def drawboard():
     print('-----------')
     print('   |   |')
     print(' ' + board['7'] + ' | ' + board['8'] + ' | ' + board['9'])
-    print('   |   |')
+    print('   |   |\n')
 
 def restart():
     restart = input('Do you want to restart game? Yes/No:\n')
