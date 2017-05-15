@@ -1,4 +1,11 @@
-board={'1': '1', '2': '2', '3': '3', '4': '4', '5': '5', '6': '6', '7': '7', '8': '8', '9': '9'}
+# Now game is playable for two players.
+# Restart is working badly
+# Player can go again to the occupied cell
+
+
+board={'1': '1', '2': '2', '3': '3', '4': '4', '5': '5', '6': '6', '7': '7', '8': '8', '9': '9'} #Starting conditions
+turn = 'player1' #Starting conditions
+letter = 'X' #Starting conditions
 
 def drawboard():
     print('   |   |')
@@ -14,12 +21,15 @@ def drawboard():
     print('   |   |\n')
 
 def restart(): #not finished
-    restart_game = input('Do you want to restart game? yes/no:\n').lower()
-    if restart_game != 'yes' or 'no':
-        restart_game = input('Do you want to restart game? yes/no:\n').lower()
+    restart_game = input('Do you want to restart game? (yes/no):\n').lower()
+#    while restart_game != 'yes' or restart_game != 'no': #why this cycle never ends?
+#        restart_game = input('Do you want to restart game? (yes/no):\n').lower()
     if restart_game == 'yes':
+        global board, turn, letter # is it ok to use global in this situation, or better to have local argument?
         board = {'1': '1', '2': '2', '3': '3', '4': '4', '5': '5', '6': '6', '7': '7', '8': '8', '9': '9'}
-    else:
+        turn = 'player1'
+        letter = 'X'
+    if restart_game == 'no':
         exit()
 
 
@@ -36,14 +46,12 @@ def Win():
     board['3'] == letter and board['5'] == letter and board['9'] == letter):       # diagonal
         if letter == 'X':
             print('Player 1 win')
-            return restart()
         else:
             print('Player 2 win')
-            return restart()
+        return restart()
 
 
-turn = 'player1'
-letter = 'X'
+
 while True:
     drawboard()
     Win()
