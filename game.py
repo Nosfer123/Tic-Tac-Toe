@@ -29,11 +29,17 @@ def restart():
             break
     if restart_game == 'yes':
         global board, turn, letter
+        cls()  # bad solution, but "import os      os.system('cls' if os.name == 'nt' else 'clear')" don't work
         board = {'1': '1', '2': '2', '3': '3', '4': '4', '5': '5', '6': '6', '7': '7', '8': '8', '9': '9'}
+        draw_board()
         turn = 'player1'
         letter = 'X'
     if restart_game == 'no':
         exit()
+
+
+def cls():  # need to clean console after restart
+    print("\n" * 40)
 
 
 def is_win():
