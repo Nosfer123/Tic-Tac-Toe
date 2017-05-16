@@ -1,5 +1,4 @@
 # Now game is playable for two players.
-# Player can choose cell is not in not exist
 
 # Starting conditions
 board = {'1': '1', '2': '2', '3': '3', '4': '4', '5': '5', '6': '6', '7': '7', '8': '8', '9': '9'}
@@ -61,14 +60,26 @@ while True:
     is_win()
     if turn == 'player1':
         letter = 'X'
-        move = input('Player 1 turn (Select a cell: 1-9): ')
-        while board[move] == 'X' or board[move] == '0':
-            move = input('This cell is occupied, please choose another one. Player 1 turn (Select a cell: 1-9): ')
+        while True:
+            try:
+                move = input('Player 1 turn (Select a cell: 1-9): ')
+                while board[move] == 'X' or board[move] == '0':
+                    move = input('This cell is occupied. Player 1 turn (Select a cell: 1-9): ')
+            except KeyError:
+                print("It's possible to choose only cells 1-9 except occupied")
+            else:
+                break
         turn = 'player2'
     else:
         letter = '0'
-        move = input('Player 2 turn (Select a cell: 1-9): ')
-        while board[move] == 'X' or board[move] == '0':
-            move = input('This cell is occupied, please choose another one. Player 2 turn (Select a cell: 1-9): ')
+        while True:
+            try:
+                move = input('Player 2 turn (Select a cell: 1-9): ')
+                while board[move] == 'X' or board[move] == '0':
+                    move = input('This cell is occupied. Player 2 turn (Select a cell: 1-9): ')
+            except KeyError:
+                print("It's possible to choose only cells 1-9 except occupied")
+            else:
+                break
         turn = 'player1'
     board[move] = letter
