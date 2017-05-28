@@ -81,7 +81,7 @@ def checking_board():  # check if this part of the board is exist
 def is_empty_cell(move_counter):
     if move_counter == 9:
         print('There is no winner in this game')
-        restart()
+        return restart()
 
 
 while True:
