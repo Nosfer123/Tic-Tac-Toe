@@ -49,7 +49,6 @@ class Game(Board):
 
     def game_core(self):
         while True:
-            print('new circle')
             self.draw_board()
             self.is_win()
             self.is_empty_cell(self.move_counter)
