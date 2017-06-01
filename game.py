@@ -1,7 +1,8 @@
 from board import Board
+from player import SuperPlayer
 
 
-class Game(Board):
+class Game(SuperPlayer, Board):
     move_counter = 0
 
     @staticmethod
